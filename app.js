@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const dateModule = require(__dirname+"/date.js");
+const mongoose = require("mongoose")
 var day = dateModule.getDate()
 console.log(day + " --This is for testing purpose"); //Outputs the output of date.js module.
 //using paranthesis to call the function inside the dateModule variable.
@@ -10,9 +11,10 @@ console.log(day + " --This is for testing purpose"); //Outputs the output of dat
 
 const app = express();
 app.set("view engine", "ejs");
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/test',{newUrlEncoded:true});
 
+mongoose.connect('mongodb://127.0.0.1:27017/taskDB',{newUrlEncoded:true});
+
+//db branch code
 
 
 app.use(bodyParser.urlencoded({extended:true}))
